@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mundo Matemático de Tania</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #f5f0ff, #eef8ff);
+        color: #263238;
+    }
+
+    header {
+        background: linear-gradient(135deg, #39245f, #7b3fa1);
+        color: white;
+        text-align: center;
+        padding: 45px 20px;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 42px;
+    }
+
+    header p {
+        font-size: 19px;
+        margin-top: 12px;
+    }
+
+    .contenedor {
+        max-width: 1100px;
+        margin: 35px auto;
+        padding: 0 20px;
+    }
+
+    .bienvenida {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+        margin-bottom: 35px;
+    }
+
+    .bienvenida h2 {
+        color: #6a329f;
+        margin-top: 0;
+    }
+
+    .temas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 22px;
+    }
+
+    .tarjeta {
+        background: white;
+        border-radius: 18px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tarjeta:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.16);
+    }
+
+    .icono {
+        font-size: 45px;
+    }
+
+    .tarjeta h3 {
+        color: #563080;
+        margin: 12px 0;
+    }
+
+    .tarjeta p {
+        color: #555;
+        min-height: 45px;
+    }
+
+    .boton {
+        display: inline-block;
+        text-decoration: none;
+        background: #7b3fa1;
+        color: white;
+        padding: 11px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+    }
+
+    .boton:hover {
+        background: #5b2c7c;
+    }
+
+    .proximamente {
+        opacity: 0.65;
+    }
+
+    footer {
+        margin-top: 45px;
+        background: #29213a;
+        color: white;
+        text-align: center;
+        padding: 25px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌟 MUNDO MATEMÁTICO DE TANIA 🌟</h1>
+    <p>Recursos interactivos para aprender, practicar y descubrir las Matemáticas</p>
+</header>
+
+<div class="contenedor">
+
+    <section class="bienvenida">
+        <h2>👩‍🏫 ¡Bienvenidos!</h2>
+        <p>
+            Este espacio reúne actividades, recursos interactivos,
+            retos y materiales para acompañar nuestras clases de Matemáticas.
+        </p>
+        <p>
+            🚀 Elige un mundo y comienza tu misión.
+        </p>
+    </section>
+
+    <section class="temas">
+
+        <div class="tarjeta">
+            <div class="icono">🔢</div>
+            <h3>Álgebra</h3>
+            <p>Expresiones, ecuaciones, factorización y más.</p>
+
+            <a class="boton"
+               href="Recurso_Interactivo_1_Termino_Comun.html">
+               🎮 Factorización
+            </a>
+        </div>
+
+        <div class="tarjeta proximamente">
+            <div class="icono">📐</div>
+            <h3>Geometría</h3>
+            <p>Figuras, triángulos, rectas y geometría analítica.</p>
+            <span class="boton">Próximamente</span>
+        </div>
+
+        <div class="tarjeta proximamente">
+            <div class="icono">📊</div>
+            <h3>Probabilidad y Estadística</h3>
+            <p>Distribuciones, probabilidad y análisis de datos.</p>
+            <span class="boton">Próximamente</span>
+        </div>
+
+        <div class="tarjeta proximamente">
+            <div class="icono">∫</div>
+            <h3>Cálculo</h3>
+            <p>Sucesiones, diferenciales e integrales.</p>
+            <span class="boton">Próximamente</span>
+        </div>
+
+        <div class="tarjeta proximamente">
+            <div class="icono">🧠</div>
+            <h3>Pensamiento Matemático</h3>
+            <p>Actividades y recursos para desarrollar el pensamiento matemático.</p>
+            <span class="boton">Próximamente</span>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>📚 Mundo Matemático de Tania</p>
+    <p>Recursos educativos para nuestras clases</p>
+</footer>
+
+</body>
+</html>
