@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roblox Factorización — Recurso Interactivo 2</title>
+<style>
+:root{--bg:#11142b;--panel:#20264a;--card:#fff;--purple:#8d5cf6;--blue:#3b82f6;--green:#58b947;--gold:#ffd34d;--text:#171a2b}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#10142d,#27204d);color:#fff}
+.wrap{max-width:1100px;margin:auto;padding:24px}.hero{background:#171b38;border:3px solid #8d5cf6;border-radius:22px;padding:20px;text-align:center;box-shadow:0 8px 30px #0006}
+.hero h1{margin:0;font-size:34px}.hero p{margin:8px 0 0;font-size:18px}.tag{display:inline-block;margin-top:12px;background:#ffd34d;color:#171a2b;font-weight:800;padding:8px 16px;border-radius:999px}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:18px}.card{background:#fff;color:var(--text);border-radius:18px;padding:20px;box-shadow:0 8px 24px #0005}
+.formula{text-align:center;font-size:30px;font-weight:800;margin:8px 0 18px}.controls{display:grid;grid-template-columns:1fr 1fr;gap:14px}.control label{font-weight:800;display:block;margin-bottom:6px}.control input{width:100%}
+input[type=range]{accent-color:#8d5cf6}.value{font-size:20px;color:#5c35b6;font-weight:800}
+.diagram{min-height:250px;display:flex;align-items:center;justify-content:center;gap:10px}.square{position:relative;border:3px solid #3b82f6;background:#75aaf7;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:24px}.minus{font-size:38px;font-weight:900}.factor{font-size:26px;font-weight:900;color:#3b35a0}
+.steps{display:grid;gap:10px;margin-top:12px}.step{padding:12px;border-radius:12px;background:#eef0ff;border-left:6px solid #8d5cf6}.step b{display:block;margin-bottom:4px}
+.challenge{margin-top:18px}.challenge h2{margin-top:0}.problem{font-size:25px;font-weight:900;text-align:center;padding:15px;background:#f3efff;border-radius:14px}.answer{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.answer input{padding:11px;border:2px solid #bbb;border-radius:10px;font-size:18px}.btn{margin-top:12px;padding:12px 18px;border:0;border-radius:12px;background:#8d5cf6;color:#fff;font-weight:900;font-size:16px;cursor:pointer}.btn:hover{filter:brightness(1.08)}.feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;min-height:24px}.good{background:#dcf7d7;color:#176b13}.bad{background:#ffe0e0;color:#8c1515}.xp{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:12px;background:#fff7cf;border-radius:12px;color:#5b4800;font-weight:900}
+.footer{margin-top:18px;text-align:center;color:#dfe4ff;font-size:14px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.controls,.answer{grid-template-columns:1fr}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<h1>🎮 ROBLOX: LA AVENTURA DE LA FACTORIZACIÓN</h1>
+<p>🔵 Mundo 2 — Portal de las raíces</p>
+<div class="tag">Diferencia de cuadrados · Método de raíces</div>
+</section>
+
+<div class="grid">
+<section class="card">
+<h2>💎 Explora la diferencia de cuadrados</h2>
+<div class="formula">a² − b² = (a − b)(a + b)</div>
+<div class="controls">
+<div class="control"><label for="a">Valor de a: <span class="value" id="av">9</span></label><input id="a" type="range" min="2" max="15" value="9"></div>
+<div class="control"><label for="b">Valor de b: <span class="value" id="bv">4</span></label><input id="b" type="range" min="1" max="14" value="4"></div>
+</div>
+<div class="diagram" id="diagram"></div>
+<div class="steps">
+<div class="step"><b>1. Reconoce</b>Los dos términos son cuadrados perfectos.</div>
+<div class="step"><b>2. Obtén las raíces</b>La raíz de a² es a y la raíz de b² es b.</div>
+<div class="step"><b>3. Forma los factores</b>Escribe dos binomios conjugados: (a − b)(a + b).</div>
+<div class="step"><b>4. Comprueba</b>Multiplica los factores y recupera la expresión original.</div>
+</div>
+</section>
+
+<section class="card">
+<h2>🎯 Misión del jugador</h2>
+<p>Observa los valores y completa la factorización.</p>
+<div class="problem" id="problem">9² − 4²</div>
+<div class="answer">
+<input id="ans1" placeholder="Primer factor, ej. 9-4">
+<input id="ans2" placeholder="Segundo factor, ej. 9+4">
+</div>
+<button class="btn" id="check">🚀 Comprobar respuesta</button>
+<div class="feedback" id="feedback"></div>
+<div class="xp">⭐ XP acumulada <span id="xp">0</span></div>
+
+<div class="challenge">
+<h2>🧩 Reto extra</h2>
+<p>Factoriza:</p>
+<div class="problem">x² − 49</div>
+<p>Escribe los dos factores conjugados:</p>
+<div class="answer">
+<input id="rx1" placeholder="Primer factor">
+<input id="rx2" placeholder="Segundo factor">
+</div>
+<button class="btn" id="check2">💎 Desbloquear portal</button>
+<div class="feedback" id="feedback2"></div>
+</div>
+</section>
+</div>
+
+<div class="footer">💡 Recuerda: si ambos términos son cuadrados perfectos y están separados por un signo menos, busca la diferencia de cuadrados.</div>
+</div>
+
+<script>
+const a=document.getElementById('a'), b=document.getElementById('b');
+const av=document.getElementById('av'), bv=document.getElementById('bv');
+const problem=document.getElementById('problem'), diagram=document.getElementById('diagram');
+const xp=document.getElementById('xp'); let points=0;
+function update(){
+  let A=+a.value, B=+b.value;
+  if(B>=A){b.value=A-1; B=A-1;}
+  av.textContent=A; bv.textContent=B;
+  problem.textContent=A+"² − "+B+"²";
+  const scale=12;
+  const big=Math.min(210,A*scale), small=Math.min(160,B*scale);
+  diagram.innerHTML =
+    '<div class="square" style="width:'+big+'px;height:'+big+'px">a²</div>'+
+    '<div class="minus">−</div>'+
+    '<div class="square" style="width:'+small+'px;height:'+small+'px;background:#8e63e8;border-color:#6c42c5">b²</div>'+
+    '<div class="minus">=</div>'+
+    '<div class="factor">(a−b)(a+b)</div>';
+}
+function addXP(n){points+=n;xp.textContent=points;}
+document.getElementById('check').addEventListener('click',()=>{
+  const A=+a.value,B=+b.value;
+  const x=document.getElementById('ans1').value.replace(/\s/g,'');
+  const y=document.getElementById('ans2').value.replace(/\s/g,'');
+  const valid=(x===`${A}-${B}`&&y===`${A}+${B}`)||(x===`${A}+${B}`&&y===`${A}-${B}`);
+  const f=document.getElementById('feedback');
+  if(valid){f.className='feedback good';f.textContent='✅ ¡Portal desbloqueado! Los factores son correctos.';addXP(20)}
+  else{f.className='feedback bad';f.textContent=`❌ Revisa las raíces: ${A} y ${B}, y forma los conjugados (${A}−${B})(${A}+${B}).`}
+});
+document.getElementById('check2').addEventListener('click',()=>{
+  const x=document.getElementById('rx1').value.replace(/\s/g,'');
+  const y=document.getElementById('rx2').value.replace(/\s/g,'');
+  const f=document.getElementById('feedback2');
+  const valid=(x==='x-7'&&y==='x+7')||(x==='x+7'&&y==='x-7');
+  if(valid){f.className='feedback good';f.textContent='🏆 ¡Reto superado! x²−49=(x−7)(x+7).';addXP(30)}
+  else{f.className='feedback bad';f.textContent='❌ Pista: √x²=x y √49=7; usa factores conjugados.'}
+});
+a.addEventListener('input',update); b.addEventListener('input',update); update();
+</script>
+</body>
+</html>
