@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roblox — Recurso Interactivo 1: Término Común</title>
+<style>
+:root{--bg:#11182f;--panel:#202b50;--card:#fff;--accent:#4f8cff;--gold:#ffd34d;--green:#54b948;--text:#171a2b}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#10162f,#27345c);color:#fff}
+.wrap{max-width:1100px;margin:auto;padding:24px}
+.hero{background:#18213f;border:3px solid var(--accent);border-radius:22px;padding:20px;text-align:center}
+.hero h1{margin:0;font-size:34px}.hero p{margin:8px 0;font-size:18px}
+.tag{display:inline-block;background:var(--gold);color:#171a2b;font-weight:900;padding:8px 16px;border-radius:999px}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:18px}
+.card{background:var(--card);color:var(--text);border-radius:18px;padding:20px;box-shadow:0 8px 24px #0005}
+.expression{text-align:center;font-size:34px;font-weight:900;background:#eef4ff;border-radius:14px;padding:16px;margin:12px 0}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.control label{display:block;font-weight:900;margin-bottom:6px}.control input{width:100%}
+.value{color:#2e61c5;font-size:20px}
+.diagram{min-height:220px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.term{border:3px solid var(--accent);border-radius:14px;padding:18px 22px;background:#eaf1ff;font-size:27px;font-weight:900}
+.arrow{font-size:34px;font-weight:900;color:#2e61c5}
+.factor{border:3px dashed #54b948;border-radius:14px;padding:18px;background:#edfaea;font-size:27px;font-weight:900}
+.steps{display:grid;gap:9px;margin-top:12px}
+.step{padding:12px;border-radius:12px;background:#f1f5ff;border-left:6px solid var(--accent)}
+.step b{display:block;margin-bottom:4px}
+.problem{font-size:28px;font-weight:900;text-align:center;padding:15px;background:#eef4ff;border-radius:14px;margin:12px 0}
+.inputs{display:grid;grid-template-columns:1fr;gap:10px}.inputs input{padding:12px;border:2px solid #bbb;border-radius:10px;font-size:18px}
+.btn{margin-top:12px;padding:12px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;font-weight:900;font-size:16px;cursor:pointer}
+.feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;min-height:24px}
+.good{background:#dcf7d7;color:#176b13}.bad{background:#ffe0e0;color:#8c1515}
+.xp{display:flex;justify-content:space-between;margin-top:12px;padding:12px;background:#fff7cf;border-radius:12px;color:#5b4800;font-weight:900}
+.challenge{margin-top:18px}.challenge .option{padding:10px;background:#f7f7fb;border-radius:10px;margin:7px 0}
+.footer{margin-top:18px;text-align:center;color:#e2e7ff;font-size:14px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<h1>🎮 ROBLOX: LA AVENTURA DE LA FACTORIZACIÓN</h1>
+<p>🟢 Mundo 1 — Bosque del Término Común</p>
+<div class="tag">FACTORIZACIÓN POR TÉRMINO COMÚN</div>
+</section>
+
+<div class="grid">
+<section class="card">
+<h2>🌳 Descubre el término común</h2>
+<p>Manipula los valores y observa cómo aparece el factor que se repite en todos los términos.</p>
+
+<div class="controls">
+<div class="control">
+<label for="c">Coeficiente común: <span class="value" id="cv">3</span></label>
+<input id="c" type="range" min="2" max="9" value="3">
+</div>
+<div class="control">
+<label for="p">Potencia de x: <span class="value" id="pv">1</span></label>
+<input id="p" type="range" min="1" max="3" value="1">
+</div>
+</div>
+
+<div class="expression" id="expr">12x + 18x</div>
+<div class="diagram" id="diagram"></div>
+
+<div class="steps">
+<div class="step"><b>1. Observa los términos</b>Busca qué número, letra o combinación se repite.</div>
+<div class="step"><b>2. Encuentra el término común</b>Es el máximo factor que puede dividir a todos los términos.</div>
+<div class="step"><b>3. Divide cada término</b>El resultado de cada división queda dentro del paréntesis.</div>
+<div class="step"><b>4. Comprueba</b>Multiplica el término común por cada término del paréntesis.</div>
+</div>
+</section>
+
+<section class="card">
+<h2>🎯 Misión del jugador</h2>
+<p>Factoriza la expresión generada. Escribe primero el término común y después el contenido del paréntesis.</p>
+<div class="problem" id="problem">12x + 18x</div>
+
+<div class="inputs">
+<input id="common" placeholder="Término común, ej. 6x">
+<input id="inside" placeholder="Contenido, ej. 2 + 3">
+</div>
+
+<button class="btn" id="check">🚀 Comprobar factorización</button>
+<div class="feedback" id="feedback"></div>
+<div class="xp">⭐ XP acumulada <span id="xp">0</span></div>
+
+<div class="challenge">
+<h2>🧩 Reto extra</h2>
+<p>¿Cuál es el término común de:</p>
+<div class="problem">18x² + 24x</div>
+<div class="option"><label><input type="radio" name="q" value="a"> 6x</label></div>
+<div class="option"><label><input type="radio" name="q" value="b"> 3x²</label></div>
+<div class="option"><label><input type="radio" name="q" value="c"> 12x</label></div>
+<button class="btn" id="quizBtn">🏆 Desbloquear la insignia</button>
+<div class="feedback" id="quizFeedback"></div>
+</div>
+</section>
+</div>
+
+<div class="footer">💡 Recuerda: factorizar por término común significa transformar una suma o diferencia en un producto.</div>
+</div>
+
+<script>
+const c=document.getElementById('c'), p=document.getElementById('p');
+const cv=document.getElementById('cv'), pv=document.getElementById('pv');
+const expr=document.getElementById('expr'), problem=document.getElementById('problem'), diagram=document.getElementById('diagram');
+let points=0;
+
+function formatTerm(coef,pow){
+  if(pow===0) return String(coef);
+  if(pow===1) return coef===1?'x':coef+'x';
+  return coef===1?'x²':coef+'x²';
+}
+function update(){
+  const C=+c.value, P=+p.value;
+  const a=4*C, b=6*C;
+  const term=formatTerm(C,P);
+  const t1=formatTerm(a,P), t2=formatTerm(b,P);
+  const inside1=a/C, inside2=b/C;
+  const expression=`${t1} + ${t2}`;
+  cv.textContent=C; pv.textContent=P;
+  expr.textContent=expression; problem.textContent=expression;
+  diagram.innerHTML=
+    `<div class="term">${expression}</div><div class="arrow">→</div>
+     <div class="factor">${term}(${inside1} + ${inside2})</div>`;
+}
+function normalize(s){
+  return s.toLowerCase().replace(/\s/g,'').replace(/²/g,'^2');
+}
+function addXP(n){points+=n;document.getElementById('xp').textContent=points}
+
+document.getElementById('check').addEventListener('click',()=>{
+  const C=+c.value,P=+p.value;
+  const commonExpected=formatTerm(C,P);
+  const insideExpected='4+6';
+  const common=normalize(document.getElementById('common').value);
+  const inside=normalize(document.getElementById('inside').value);
+  const f=document.getElementById('feedback');
+
+  if(common===normalize(commonExpected) && (inside===insideExpected || inside==='6+4')){
+    f.className='feedback good';
+    f.textContent=`✅ ¡Misión superada! ${commonExpected}(4 + 6) reconstruye la expresión original.`;
+    addXP(20);
+  }else{
+    f.className='feedback bad';
+    f.textContent=`❌ Pista: busca el término que aparece en ambos términos. Después divide cada término entre él.`;
+  }
+});
+
+document.getElementById('quizBtn').addEventListener('click',()=>{
+  const selected=document.querySelector('input[name="q"]:checked');
+  const f=document.getElementById('quizFeedback');
+  if(selected && selected.value==='a'){
+    f.className='feedback good';
+    f.textContent='🏆 ¡Insignia desbloqueada! 18x² + 24x = 6x(3x + 4).';
+    addXP(30);
+  }else{
+    f.className='feedback bad';
+    f.textContent='❌ Pista: busca el máximo término que pueda dividir a 18x² y a 24x.';
+  }
+});
+
+c.addEventListener('input',update); p.addEventListener('input',update); update();
+</script>
+</body>
+</html>
