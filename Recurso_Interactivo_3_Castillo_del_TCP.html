@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roblox Factorización — Recurso Interactivo 3</title>
+<style>
+:root{--bg:#15132d;--panel:#252044;--card:#fff;--purple:#8d5cf6;--gold:#ffd34d;--green:#58b947;--text:#171a2b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#12102b,#31204c);color:#fff}
+.wrap{max-width:1100px;margin:auto;padding:24px}.hero{background:#181536;border:3px solid #8d5cf6;border-radius:22px;padding:20px;text-align:center}.hero h1{margin:0;font-size:34px}.hero p{margin:8px 0;font-size:18px}.tag{display:inline-block;background:#ffd34d;color:#171a2b;font-weight:900;padding:8px 16px;border-radius:999px}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:18px}.card{background:#fff;color:var(--text);border-radius:18px;padding:20px;box-shadow:0 8px 24px #0005}
+.formula{text-align:center;font-size:30px;font-weight:900;margin:8px 0 18px}.diagram{min-height:235px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}.box{display:flex;align-items:center;justify-content:center;border:3px solid #8d5cf6;border-radius:12px;background:#eee9ff;font-size:24px;font-weight:900;padding:20px}.arrow{font-size:34px;font-weight:900;color:#6a42c5}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:14px}.control label{display:block;font-weight:900;margin-bottom:6px}.control input{width:100%}.value{color:#6a42c5;font-size:20px}
+.steps{display:grid;gap:9px;margin-top:12px}.step{padding:12px;border-radius:12px;background:#f0ecff;border-left:6px solid #8d5cf6}.step b{display:block;margin-bottom:4px}
+.problem{font-size:26px;font-weight:900;text-align:center;padding:15px;background:#f3efff;border-radius:14px;margin:12px 0}.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.inputs input{padding:11px;border:2px solid #bbb;border-radius:10px;font-size:18px}.btn{margin-top:12px;padding:12px 18px;border:0;border-radius:12px;background:#8d5cf6;color:#fff;font-weight:900;font-size:16px;cursor:pointer}.feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;min-height:24px}.good{background:#dcf7d7;color:#176b13}.bad{background:#ffe0e0;color:#8c1515}.xp{display:flex;justify-content:space-between;margin-top:12px;padding:12px;background:#fff7cf;border-radius:12px;color:#5b4800;font-weight:900}
+.quiz{margin-top:18px}.quiz-item{padding:12px;background:#f7f5ff;border-radius:12px;margin:10px 0}.quiz-item label{display:block;margin:7px 0}.footer{margin-top:18px;text-align:center;color:#e2e4ff}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.controls,.inputs{grid-template-columns:1fr}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<h1>🎮 ROBLOX: LA AVENTURA DE LA FACTORIZACIÓN</h1>
+<p>🟣 Mundo 3 — Castillo del TCP</p>
+<div class="tag">TRINOMIO CUADRADO PERFECTO</div>
+</section>
+
+<div class="grid">
+<section class="card">
+<h2>🏰 Construye el TCP</h2>
+<div class="formula">(a ± b)² = a² ± 2ab + b²</div>
+<div class="controls">
+<div class="control"><label for="a">Raíz del primer término: <span class="value" id="av">3</span></label><input id="a" type="range" min="1" max="10" value="3"></div>
+<div class="control"><label for="b">Raíz del último término: <span class="value" id="bv">2</span></label><input id="b" type="range" min="1" max="10" value="2"></div>
+</div>
+<div class="diagram" id="diagram"></div>
+<div class="steps">
+<div class="step"><b>1. Reconoce</b>El primer y último término deben ser cuadrados perfectos.</div>
+<div class="step"><b>2. Obtén las raíces</b>Calcula las raíces de los términos extremos.</div>
+<div class="step"><b>3. Comprueba el término central</b>Debe ser el doble producto de las raíces: 2ab, con el signo correspondiente.</div>
+<div class="step"><b>4. Factoriza</b>Escribe el binomio al cuadrado.</div>
+</div>
+</section>
+
+<section class="card">
+<h2>🎯 Misión del jugador</h2>
+<p>Observa el trinomio generado y descubre el binomio al cuadrado.</p>
+<div class="problem" id="problem">x² + 10x + 25</div>
+<div class="inputs">
+<input id="ans" placeholder="Ejemplo: (x+5)²">
+<input id="middle" placeholder="Comprueba: 2ab">
+</div>
+<button class="btn" id="check">🚀 Comprobar TCP</button>
+<div class="feedback" id="feedback"></div>
+<div class="xp">⭐ XP acumulada <span id="xp">0</span></div>
+
+<div class="quiz">
+<h2>🧩 Reto extra</h2>
+<div class="quiz-item">
+<strong>¿Cuál es un TCP?</strong>
+<label><input type="radio" name="q" value="a"> x² + 6x + 9</label>
+<label><input type="radio" name="q" value="b"> x² + 5x + 9</label>
+<label><input type="radio" name="q" value="c"> x² + 7x + 16</label>
+</div>
+<button class="btn" id="quizBtn">🏆 Desbloquear el castillo</button>
+<div class="feedback" id="quizFeedback"></div>
+</div>
+</section>
+</div>
+<div class="footer">💡 Pista: si las raíces de los extremos son a y b, calcula 2ab y compáralo con el término central.</div>
+</div>
+
+<script>
+const a=document.getElementById('a'),b=document.getElementById('b'),av=document.getElementById('av'),bv=document.getElementById('bv');
+const problem=document.getElementById('problem'),diagram=document.getElementById('diagram');let points=0;
+function update(){
+ const A=+a.value,B=+b.value, mid=2*A*B;
+ av.textContent=A;bv.textContent=B;
+ problem.textContent=`x² + ${mid}x + ${B*B}`;
+ diagram.innerHTML=
+ `<div class="box">x²</div><div class="arrow">+</div><div class="box">${mid}x</div><div class="arrow">+</div><div class="box">${B*B}</div><div class="arrow">→</div><div class="box">(x + ${B})²</div>`;
+}
+function addXP(n){points+=n;document.getElementById('xp').textContent=points;}
+document.getElementById('check').addEventListener('click',()=>{
+ const A=+a.value,B=+b.value,mid=2*A*B;
+ const ans=document.getElementById('ans').value.replace(/\s/g,'').replace(/\^2/g,'²');
+ const m=document.getElementById('middle').value.replace(/\s/g,'');
+ const validAns=ans===`(x+${B})²`||ans===`(x+${B})2`;
+ const validMid=m===String(mid);
+ const f=document.getElementById('feedback');
+ if(validAns&&validMid){f.className='feedback good';f.textContent=`✅ ¡TCP dominado! x² + ${mid}x + ${B*B} = (x + ${B})².`;addXP(25)}
+ else{f.className='feedback bad';f.textContent=`❌ Revisa: √x²=x, √${B*B}=${B} y el término central debe ser 2(${A})(${B})=${mid}.`}
+});
+document.getElementById('quizBtn').addEventListener('click',()=>{
+ const selected=document.querySelector('input[name="q"]:checked'),f=document.getElementById('quizFeedback');
+ if(selected&&selected.value==='a'){f.className='feedback good';f.textContent='🏆 ¡Castillo desbloqueado! x²+6x+9=(x+3)².';addXP(30)}
+ else{f.className='feedback bad';f.textContent='❌ Pista: busca dos cuadrados perfectos cuyos términos centrales sean el doble producto de sus raíces.'}
+});
+a.addEventListener('input',update);b.addEventListener('input',update);update();
+</script>
+</body>
+</html>
